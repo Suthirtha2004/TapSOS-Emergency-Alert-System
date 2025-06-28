@@ -1,0 +1,51 @@
+.tap-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.sos-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sos-button {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  font-size: 4.5rem;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.18);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  letter-spacing: 2px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sos-button:active,
+.sos-button.pressed {
+  background: #9ca3af;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(156, 163, 175, 0.18);
+  transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+  .sos-button {
+    width: 200px;
+    height: 200px;
+    font-size: 2.5rem;
+  }
+} 
