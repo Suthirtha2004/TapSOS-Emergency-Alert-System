@@ -299,6 +299,33 @@
   gap: 12px;
 }
 
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+}
+
+.profile-btn:hover {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: #fff;
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18);
+}
+
+.profile-btn:active {
+  transform: scale(0.98);
+}
+
 .logout-btn {
   display: flex;
   align-items: center;

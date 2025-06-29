@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, LogIn, Phone, Shield, Heart, Users, User as UserIcon, CheckCircle, LogOut } from 'lucide-react';
+import { Menu, X, LogIn, Phone, Shield, Heart, Users, User as UserIcon, CheckCircle, LogOut, UserCheck } from 'lucide-react';
 import './UI/Header.css';
 
 const Header = ({ onNav, isLoggedIn }) => {
@@ -26,6 +26,11 @@ const Header = ({ onNav, isLoggedIn }) => {
 
   const handleLoginClick = () => {
     navigate('/login');
+    setIsMenuOpen(false);
+  };
+
+  const handleProfileClick = () => {
+    navigate('/userprofile');
     setIsMenuOpen(false);
   };
 
@@ -62,6 +67,10 @@ const Header = ({ onNav, isLoggedIn }) => {
               <UserIcon size={24} className="profile-icon" />
               <span className="logged-in-status"><CheckCircle size={16} style={{marginRight: 4}}/>Logged in</span>
             </div>
+            <button className="profile-btn" onClick={handleProfileClick} title="User Profile">
+              <UserCheck size={20} />
+              <span>Profile</span>
+            </button>
             <button className="logout-btn" onClick={handleLogout} title="Log out">
               <LogOut size={20} />
               <span>Logout</span>
@@ -94,6 +103,10 @@ const Header = ({ onNav, isLoggedIn }) => {
                   <UserIcon size={20} className="profile-icon" />
                   <span className="logged-in-status"><CheckCircle size={14} style={{marginRight: 2}}/>Logged in</span>
                 </div>
+                <button className="profile-btn" onClick={handleProfileClick} title="User Profile">
+                  <UserCheck size={18} />
+                  <span>Profile</span>
+                </button>
                 <button className="logout-btn" onClick={handleLogout} title="Log out">
                   <LogOut size={18} />
                   <span>Logout</span>

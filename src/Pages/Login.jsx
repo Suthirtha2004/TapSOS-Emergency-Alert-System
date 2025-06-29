@@ -94,7 +94,7 @@ const Login = () => {
           localStorage.setItem('tapsos_logged_in', 'true');
           localStorage.setItem('tapsos_user_email', formData.email);
           showNotification('Demo login successful! Welcome to TapSOS.', 'success');
-          navigate('/details');
+          navigate('/tap');
         } else {
           showNotification('Invalid credentials. Please try again.', 'error');
         }
@@ -117,7 +117,7 @@ const Login = () => {
       localStorage.setItem('tapsos_logged_in', 'true');
       localStorage.setItem('tapsos_user_email', 'google-user@example.com');
       showNotification('Google sign-in functionality would be implemented here.', 'info');
-      navigate('/details');
+      navigate('/tap');
       setIsLoading(false);
     }, 1000);
   };
@@ -216,7 +216,7 @@ const Login = () => {
                 className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
               </button>
             </div>
             {errors.password && <span className="error-message">{errors.password}</span>}
@@ -239,7 +239,7 @@ const Login = () => {
                   className="password-toggle"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showConfirmPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                 </button>
               </div>
               {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}

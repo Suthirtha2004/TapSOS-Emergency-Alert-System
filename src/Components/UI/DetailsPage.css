@@ -10,7 +10,7 @@
 }
 
 .details-container {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 100px 20px 40px;
 }
@@ -282,7 +282,7 @@
 
 .permissions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -354,8 +354,11 @@
 /* Form Actions */
 .form-actions {
   padding: 40px;
-  text-align: center;
+  text-align: right;
   background: #f8f9fa;
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
 }
 
 .save-btn {
@@ -395,7 +398,35 @@
   background: linear-gradient(135deg, #10b981, #059669);
 }
 
+.profile-cancel-btn {
+  background: #e5e7eb;
+  color: #333;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+}
+
+.profile-cancel-btn:hover {
+  background: #d1d5db;
+}
+
 /* Responsive Design */
+@media (max-width: 900px) {
+  .details-container {
+    max-width: 98vw;
+    padding: 80px 10px 30px;
+  }
+  .permissions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .details-container {
     padding: 80px 15px 30px;
@@ -420,18 +451,6 @@
 
   .contact-form-grid {
     grid-template-columns: 1fr;
-  }
-
-  .permissions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .location-input {
-    flex-direction: column;
-  }
-
-  .location-btn {
-    width: 100%;
   }
 
   .contact-header {
@@ -569,4 +588,46 @@
   background: white;
   color: #333;
   padding: 10px;
+}
+
+.vertical-form-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.back-to-tap-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #ef4444 !important;
+  border: none;
+  color: #fff !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 32px !important;
+  padding: 0.5rem 2.5rem !important;
+  margin-bottom: 2rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  transition: background 0.18s, border 0.18s;
+  z-index: 10;
+  animation: blink-red 1s linear infinite;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+@keyframes blink-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.back-to-tap-btn:hover {
+  background: #b91c1c !important;
+}
+
+.arrow-left {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  color: #fff !important;
 } 

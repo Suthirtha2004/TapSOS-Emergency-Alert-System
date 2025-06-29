@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Phone, Shield, Heart, Users, AlertTriangle, MapPin, Clock, Star } from 'lucide-react';
 import Header from '../Components/Header';
 import '../Components/UI/LandingPage.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useNotification } from '../Components/NotificationProvider';
 
 const LandingPage = () => {
@@ -15,6 +15,7 @@ const LandingPage = () => {
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { showNotification } = useNotification();
 
   // Section refs for smooth scroll
@@ -54,6 +55,10 @@ const LandingPage = () => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleBackToTap = () => {
+    navigate('/tap');
   };
 
   // States and Cities data
@@ -148,13 +153,12 @@ const LandingPage = () => {
     window.open(`tel:${number}`, '_self');
   };
 
-  const handleContactFormChange = (e) => {
+  const handleContactInputChange = (e) => {
     const { name, value } = e.target;
     setContactForm(prev => ({
       ...prev,
       [name]: value
     }));
-
     // Reset city when state changes
     if (name === 'state') {
       setContactForm(prev => ({
@@ -180,7 +184,11 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <Header onNav={handleNav} isLoggedIn={isLoggedIn} />
-      
+      {isLoggedIn && (
+        <button className="back-to-tap-home-btn" onClick={handleBackToTap}>
+          <span className="arrow-left">&#8592;</span> Back to Tap
+        </button>
+      )}
       {/* Hero Section */}
       <section id="home" className="hero-section" ref={homeRef}>
         <div className="hero-container">
@@ -194,11 +202,11 @@ const LandingPage = () => {
               One tap, immediate help. Your safety is our priority.
             </p>
             <div className="hero-buttons">
-              <button className="cta-button primary">
+              <button className="cta-button primary" onClick={() => navigate('/login')}>
                 <Phone size={20} />
                 Get Started
               </button>
-              <button className="cta-button secondary">
+              <button className="cta-button secondary" onClick={() => handleNav('about')}>
                 Learn More
               </button>
             </div>
@@ -323,7 +331,7 @@ const LandingPage = () => {
                   type="text" 
                   name="name"
                   value={contactForm.name}
-                  onChange={handleContactFormChange}
+                  onChange={handleContactInputChange}
                   placeholder="Your Name" 
                   required
                 />
@@ -331,14 +339,14 @@ const LandingPage = () => {
                   type="email" 
                   name="email"
                   value={contactForm.email}
-                  onChange={handleContactFormChange}
+                  onChange={handleContactInputChange}
                   placeholder="Your Email" 
                   required
                 />
                 <select 
                   name="state" 
                   value={contactForm.state}
-                  onChange={handleContactFormChange}
+                  onChange={handleContactInputChange}
                   required
                 >
                   <option value="">Select State</option>
@@ -349,7 +357,7 @@ const LandingPage = () => {
                 <select 
                   name="city" 
                   value={contactForm.city}
-                  onChange={handleContactFormChange}
+                  onChange={handleContactInputChange}
                   required
                   disabled={!contactForm.state}
                 >
@@ -361,7 +369,7 @@ const LandingPage = () => {
                 <textarea 
                   name="message"
                   value={contactForm.message}
-                  onChange={handleContactFormChange}
+                  onChange={handleContactInputChange}
                   placeholder="Your Message" 
                   rows="4"
                   required
